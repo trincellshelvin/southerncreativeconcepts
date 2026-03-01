@@ -32,7 +32,7 @@ export default function Consultation() {
     }
 
     return (
-        <main className="container mx-auto py-16">
+        <main role="main" className="container mx-auto py-16">
             <div className="mx-auto max-w-xl bg-white/10 p-8 rounded shadow-lg">
                 <h1 className="text-3xl font-semibold">Schedule a Consultation</h1>
                 <p className="mt-4 text-justify">
@@ -42,47 +42,86 @@ export default function Consultation() {
                     and simplify the process for non-technical clients.
                 </p>
                 <form onSubmit={handleSubmit} className="mt-6">
-                    <input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        type="text"
-                        required
-                        placeholder="Name"
-                        className="mb-4 block w-full rounded border-white bg-white p-2 text-gray-800"
-                    />
-                    <input
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        type="tel"
-                        name="phone"
-                        inputMode="tel"
-                        pattern="[0-9+\-()\s]{7,}"
-                        placeholder="Phone"
-                        className="mb-4 block w-full rounded border-white bg-white p-2 text-gray-800"
-                    />
-                    <input
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="email"
-                        required
-                        placeholder="Email"
-                        className="mb-4 block w-full rounded border-white bg-white p-2 text-gray-800"
-                    />
-                    <textarea
-                        value={details}
-                        onChange={(e) => setDetails(e.target.value)}
-                        rows={4}
-                        placeholder="Project Details"
-                        className="mb-4 block w-full rounded border-white bg-white p-2 text-gray-800"
-                    />
+                    <div className="mb-6">
+                        <label htmlFor="name" className="block font-semibold mb-2">
+                            Name <span className="text-red-400" aria-label="required">*</span>
+                        </label>
+                        <input
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            type="text"
+                            required
+                            aria-required="true"
+                            className="w-full rounded border-2 border-white bg-white p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label htmlFor="phone" className="block font-semibold mb-2">
+                            Phone
+                        </label>
+                        <input
+                            id="phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            type="tel"
+                            inputMode="tel"
+                            pattern="[0-9+\-()\s]{7,}"
+                            aria-describedby="phone-help"
+                            className="w-full rounded border-2 border-white bg-white p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                        />
+                        <p id="phone-help" className="mt-1 text-sm text-gray-300">
+                            At least 7 digits (optional)
+                        </p>
+                    </div>
+                    <div className="mb-6">
+                        <label htmlFor="email" className="block font-semibold mb-2">
+                            Email <span className="text-red-400" aria-label="required">*</span>
+                        </label>
+                        <input
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            required
+                            aria-required="true"
+                            className="w-full rounded border-2 border-white bg-white p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label htmlFor="details" className="block font-semibold mb-2">
+                            Project Details
+                        </label>
+                        <textarea
+                            id="details"
+                            value={details}
+                            onChange={(e) => setDetails(e.target.value)}
+                            rows={4}
+                            className="w-full rounded border-2 border-white bg-white p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                        />
+                    </div>
                     <button
                         type="submit"
-                        className="mt-4"
+                        className="mt-4 w-full"
                     >
                         Contact Us
                     </button>
                 </form>
-                {status && <p className="mt-4 text-green-600">{status}</p>}
+                {status && (
+                    <div 
+                        role="alert" 
+                        aria-live="polite" 
+                        className={`mt-4 p-3 rounded text-center font-semibold ${
+                            status.includes('Thank you') || status.includes('sent')
+                                ? 'bg-green-600/20 text-green-200'
+                                : status === 'Sending...'
+                                ? 'bg-blue-600/20 text-blue-200'
+                                : 'bg-red-600/20 text-red-200'
+                        }`}
+                    >
+                        {status}
+                    </div>
+                )}
             </div>
         </main>
     );
