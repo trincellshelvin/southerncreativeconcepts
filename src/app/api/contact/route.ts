@@ -26,6 +26,7 @@ export async function POST(request: NextRequest) {
     const subject = `Consultation request from ${name || "(no name)"}`;
     const text = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nDetails:\n${details}`;
 
+    // send message to internal address
     await transporter.sendMail({
       from: smtpUser,
       to: destEmail,
@@ -33,6 +34,21 @@ export async function POST(request: NextRequest) {
       text,
       html: `<p><strong>Name:</strong> ${name}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>Email:</strong> ${email}</p><p><strong>Details:</strong><br/>${details}</p>`,
     });
+
+    // send confirmation to client if email provided
+    if (email) {
+      const clientSubject = "We received your consultation request";
+      const clientText = `Hello ${name || "there"},\n\nThank you for contacting Southern Creative Concepts. We have received your consultation request and will be in touch shortly.\n\nYour details:\n${details}\n\nBest regards,\nSouthern Creative Concepts`;
+      const clientHtml = `<p>Hello ${name || "there"},</p><p>Thank you for contacting <strong>Southern Creative Concepts</strong>. We have received your consultation request and will be in touch shortly.</p><p><strong>Your details:</strong><br/>${details}</p><p>Best regards,<br/>Southern Creative Concepts</p>`;
+
+      await transporter.sendMail({
+        from: smtpUser,
+        to: email,
+        subject: clientSubject,
+        text: clientText,
+        html: clientHtml,
+      });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
