@@ -58,7 +58,7 @@ export default function Consultation() {
                     </div>
                     <div className="mb-6">
                         <label htmlFor="phone" className="block font-semibold mb-2">
-                            Phone
+                            Phone <span className="text-red-400" aria-label="required">*</span>
                         </label>
                         <input
                             id="phone"
@@ -66,12 +66,14 @@ export default function Consultation() {
                             onChange={(e) => setPhone(e.target.value)}
                             type="tel"
                             inputMode="tel"
-                            pattern="[0-9+\-()\s]{7,}"
+                            pattern="[0-9+\-(\)\s]{7,}"
+                            required
+                            aria-required="true"
                             aria-describedby="phone-help"
                             className="w-full rounded border-2 border-white bg-white p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                         />
                         <p id="phone-help" className="mt-1 text-sm text-gray-300">
-                            At least 7 digits (optional)
+                            At least 7 digits
                         </p>
                     </div>
                     <div className="mb-6">
@@ -90,13 +92,15 @@ export default function Consultation() {
                     </div>
                     <div className="mb-6">
                         <label htmlFor="details" className="block font-semibold mb-2">
-                            Project Details
+                            Project Details <span className="text-red-400" aria-label="required">*</span>
                         </label>
                         <textarea
                             id="details"
                             value={details}
                             onChange={(e) => setDetails(e.target.value)}
                             rows={4}
+                            required
+                            aria-required="true"
                             className="w-full rounded border-2 border-white bg-white p-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                         />
                     </div>
