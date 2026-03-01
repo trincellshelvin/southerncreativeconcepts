@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  /* dark blue radial gradient background */
+  background: #020024;
+  background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  color: #eee;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  background: #090979; /* primary palette color */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #002dff;
+}
+
+/* Hero section sizing and responsive adjustments */
+.hero {
+  height: 40vh; /* smaller so content fits below */
+  min-height: 16rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  z-index: 10;
+}
+
+/* Nav logo container to help responsive sizing */
+.nav-logo {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 14rem; /* smaller hero on mobile */
+  }
+  .hero h1 {
+    font-size: 1.25rem;
+  }
+  .nav-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
