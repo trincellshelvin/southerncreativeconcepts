@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <main className="container mx-auto py-16">
+        <main className="container mx-auto py-16 relative">
             <h1 className="text-3xl font-semibold">About Southern Creative Concepts</h1>
             <p className="mt-4">
                 Southern Creative Concepts provides a comprehensive suite of web
@@ -26,6 +26,10 @@ export default function About() {
                 digital services to startups and small businesses through a remote-first,
                 client-centric approach.
             </p>
+            {/* facebook logo link positioned bottom-right */}
+            <a href="https://www.facebook.com/southerncreativeconcepts" target="_blank" rel="noopener noreferrer" className="fixed bottom-4 right-4">
+                <img src="/Facebook_Logo_Secondary.png" alt="Facebook" className="w-8 h-8" />
+            </a>
         </main>
     );
 }
