@@ -29,17 +29,23 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <header role="banner" className="bg-gradient-to-b from-[#090979] to-[#002dff] text-white p-4">
-          <nav role="navigation" aria-label="Main navigation" className="container mx-auto flex items-center justify-start space-x-6">
-            <a href="/" className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded px-2 py-1" aria-label="Southern Creative Concepts Home">
+          <nav role="navigation" aria-label="Main navigation" className="container mx-auto relative flex items-center justify-center space-x-6">
+            {/* logo-only link pinned to left */}
+            <a href="/" className="absolute left-0 flex items-center focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded p-1" aria-label="Southern Creative Concepts Home">
               <Image src="/SouthernCreativeConceptsRainbow.png" alt="Southern Creative Concepts Logo" width={60} height={60} className="object-contain" />
-              <span className="font-semibold hover:underline">Home</span>
             </a>
-            <a href="/about" className="font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded px-2 py-1" aria-label="About Southern Creative Concepts">
-              About
-            </a>
-            <a href="/consultation" className="font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded px-2 py-1" aria-label="Contact Us - Schedule a Consultation">
-              Contact Us
-            </a>
+            {/* center group: home + about + contact */}
+            <div className="flex items-center space-x-6">
+              <a href="/" className="font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded px-2 py-1">
+                Home
+              </a>
+              <a href="/about" className="font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded px-2 py-1" aria-label="About Southern Creative Concepts">
+                About
+              </a>
+              <a href="/consultation" className="font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded px-2 py-1" aria-label="Contact Us - Schedule a Consultation">
+                Contact Us
+              </a>
+            </div>
           </nav>
         </header>
         <main role="main" className="flex-grow">
