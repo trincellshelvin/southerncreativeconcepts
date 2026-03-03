@@ -30,6 +30,10 @@ export default function Home() {
           complexities of the digital world on your behalf.
         </p>
       </section>
+      {/* facebook logo link positioned bottom-right */}
+      <a href="https://www.facebook.com/southerncreativeconcepts" target="_blank" rel="noopener noreferrer" className="fixed bottom-4 right-4">
+        <img src="/Facebook_Logo_Secondary.png" alt="Facebook" className="w-8 h-8" />
+      </a>
     </main>
   );
 }

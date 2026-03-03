@@ -32,7 +32,7 @@ export default function Consultation() {
     }
 
     return (
-        <main role="main" className="container mx-auto py-16">
+        <main role="main" className="container mx-auto py-16 relative">
             <div className="mx-auto max-w-xl bg-white/10 p-8 rounded shadow-lg">
                 <h1 className="text-3xl font-semibold">Schedule a Consultation</h1>
                 <p className="mt-4 text-justify">
@@ -127,6 +127,10 @@ export default function Consultation() {
                     </div>
                 )}
             </div>
+            {/* facebook logo link positioned bottom-right */}
+            <a href="https://www.facebook.com/southerncreativeconcepts" target="_blank" rel="noopener noreferrer" className="fixed bottom-4 right-4">
+                <img src="/Facebook_Logo_Secondary.png" alt="Facebook" className="w-8 h-8" />
+            </a>
         </main>
     );
 }
